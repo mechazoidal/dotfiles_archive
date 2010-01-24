@@ -8,8 +8,15 @@ if has("gui_macvim")
     highlight normal guibg=black
     set transparency=8
   endif
+elseif has("gui_gtk2")
+  set guifont=Monaco
+  set guioptions-=T " remove toolbar
+  colorscheme ir_black
 elseif has("gui_win32")
-  " TODO: add win32-specific stuff from home machine
+  set guioptions-=T " remove toolbar
+  set stal=2 " turn on tabs by default
+  set guifont=Lucida_Console:h12  
+  colorscheme ir_black
 end
 
 " General settings ----
