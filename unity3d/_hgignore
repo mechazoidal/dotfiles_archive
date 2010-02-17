@@ -1,0 +1,16 @@
+syntax: glob
+Library/cache/*
+Library/metadata/*
+Library/ScriptAssemblies/*
+Library/ProjectUsesCompressTexturesOnImport
+Library/ScriptMapper
+Library/assetDatabase3
+Library/assetservercachev3
+Library/expandedItems
+Library/guidmapper
+Library/*.db
+Library/*.asset
+Library/*.txt
+Library/unity default resources
+Library/unity editor resources
+Temp/*
