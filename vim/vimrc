@@ -43,6 +43,11 @@ set linebreak  " Wrap at word
 "autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+"scons
+autocmd BufReadPre SConstruct set filetype=python
+autocmd BufReadPre SConscript set filetype=python
+"
+
 "improve autocomplete menu color
 "highlight Pmenu ctermbg=238 gui=bold
 "colorscheme desert256
