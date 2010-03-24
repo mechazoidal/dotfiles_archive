@@ -58,3 +58,7 @@ autocmd BufReadPre SConscript set filetype=python
 
 set anti " Antialias font
 filetype plugin on
+
+
+" QuickKeys *****************************************************************
+map <F2> :NERDTreeToggle<CR>
