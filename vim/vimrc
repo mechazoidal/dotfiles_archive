@@ -44,8 +44,8 @@ set linebreak  " Wrap at word
 "autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "scons
-autocmd BufReadPre SConstruct set filetype=python
-autocmd BufReadPre SConscript set filetype=python
+"autocmd BufReadPre SConstruct set filetype=python
+"autocmd BufReadPre SConscript set filetype=python
 "
 
 "improve autocomplete menu color
@@ -57,7 +57,7 @@ autocmd BufReadPre SConscript set filetype=python
 "au BufNewFile,BufRead SConstruct,SConscript set filetype=python
 
 set anti " Antialias font
-filetype plugin on
+filetype plugin indent on
 
 
 " QuickKeys *****************************************************************
