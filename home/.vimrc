@@ -12,9 +12,9 @@ set smartcase " Ignore case when searching lowercase
 
 " Colors **********************************************************************
 "set t_Co=256 " 256 colors
-set background=dark 
+" set background=dark 
 syntax on " syntax highlighting
-colorscheme ir_black
+" colorscheme ir_black
 
 
 " Status Line *****************************************************************
