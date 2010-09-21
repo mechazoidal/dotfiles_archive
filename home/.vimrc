@@ -29,7 +29,6 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set anti " Antialias font if possible
 set relativenumber " requires Vim 7.3!
 set undofile " requires Vim 7.3!
 
@@ -95,6 +94,12 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>a :Ack
 " use jj to exit insert mode
 inoremap jj <ESC>
+" Window-splitting helpers
+nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " OBSOLETE settings
 "set t_Co=256 " 256 colors
