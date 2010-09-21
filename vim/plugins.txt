@@ -1,6 +1,0 @@
-Using plugins:
-snipMate (0.83)
-NERD Tree (4.1.0)
-file-line (?)
-surround (1.90)
-SuperTab continued (1.0)(via vimball)
