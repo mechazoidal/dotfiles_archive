@@ -32,6 +32,12 @@ set laststatus=2
 set relativenumber " requires Vim 7.3!
 set undofile " requires Vim 7.3!
 
+" Disable cursor blinking
+set gcr=a:blinkon0
+
+" Don't show these filetypes in wildmenu
+set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
+
 " I think this is automatically set?
 syntax on " syntax highlighting
 
@@ -100,13 +106,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" OBSOLETE settings
-"set t_Co=256 " 256 colors
-" set background=dark 
-" colorscheme ir_black
+" fold tags with ,ft
+nnoremap <leader>ft Vatzf
 
-"improve autocomplete menu color
-"highlight Pmenu ctermbg=238 gui=bold
-"colorscheme desert256
-"syntax enable
+" Reselect just-pasted text with ,v
+nnoremap <leader>v V`]
+
 

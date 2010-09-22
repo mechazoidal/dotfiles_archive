@@ -21,8 +21,18 @@ end
 
 " General settings ----
 
-" anti-aliased fonts
+" anti-aliased fonts where possible
 set anti 
 
 " Tab headings (evaluate these to see if I like them?)
 set gtl=%t gtt=%F
+
+" OBSOLETE settings
+"set t_Co=256 " 256 colors
+" set background=dark 
+" colorscheme ir_black
+
+"improve autocomplete menu color
+"highlight Pmenu ctermbg=238 gui=bold
+"colorscheme desert256
+"syntax enable
