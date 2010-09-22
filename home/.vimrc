@@ -83,8 +83,7 @@ set listchars=tab:▸\ ,eol:¬
 nnoremap ; :
 
 " Autosave on losing focus
-" Doesn't seem to work outside MacVim?
-" au FocustLost * :wa
+au FocusLost * :wa
 
 " Mappings
 map <F2> :NERDTreeToggle<CR>
