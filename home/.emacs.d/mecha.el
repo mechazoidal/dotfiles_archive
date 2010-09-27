@@ -7,6 +7,10 @@
 (setq org-agentda-files (list "~/Dropbox/Org/home.org" 
                               "~/Dropbox/Org/projects.org"))
 
+;; FIXME: not sure how to add this to emacs load path, since this
+;; is a MacPorts-ism
+(setq-default ispell-program-name "/opt/local/bin/aspell")
+
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
 (color-theme-blackboard)
