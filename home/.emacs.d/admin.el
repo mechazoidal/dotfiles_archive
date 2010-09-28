@@ -3,7 +3,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
-(global-set-key (kbd "<f12>") 'org-agenda)
+(global-set-key (kbd "<f2>") 'org-agenda)
 
 (setq org-log-done t)
 
