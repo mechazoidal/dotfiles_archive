@@ -7,7 +7,7 @@
 
 (setq org-log-done t)
 
-(setq org-agentda-files (list "/Users/admin/Documents/org/notes_2010.org"
+(setq org-agenda-files (list "/Users/admin/Documents/org/notes_2010.org"
                               "/Users/admin/Documents/org/depot_central.org"
                               "/Users/admin/Documents/org/refile.org"
                               "/Users/admin/Documents/org/ub.org"
@@ -20,6 +20,10 @@
 ;; FIXME: not sure if this is the right way: unlike Vim the first j will be captured
 ;; instead of echoed.
 ;; (vimpulse-imap (kbd "jj") vimpulse-exit-insert-state)
+
+;; smart-tab setup
+(require 'smart-tab)
+(global-smart-tab-mode 1)
 
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
