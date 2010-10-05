@@ -25,6 +25,9 @@
 (require 'smart-tab)
 (global-smart-tab-mode 1)
 
+;; full-ack setup
+(setq ack-executable (executable-find "/opt/local/bin/ack"))
+
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
 (color-theme-blackboard)
