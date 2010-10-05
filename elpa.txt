@@ -1,0 +1,7 @@
+Packages what to install from ELPA
+smex
+rinari
+smart-tab
+muse
+yaml-mode
+yasnippet-bundle (already installed?)
