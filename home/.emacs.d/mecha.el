@@ -19,6 +19,9 @@
 ;; instead of echoed.
 ;; (vimpulse-imap (kbd "jj") vimpulse-exit-insert-state)
 
+;; full-ack setup
+(setq ack-executable (executable-find "/opt/local/bin/ack"))
+
 ;; smart-tab setup
 (require 'smart-tab)
 (global-smart-tab-mode 1)
