@@ -28,6 +28,15 @@
 ;; full-ack setup
 (setq ack-executable (executable-find "/opt/local/bin/ack"))
 
+;; Textmate/peepopen setup
+(require 'textmate)
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'peepopen)
+(textmate-mode)
+;; don't open a new window for peepopen
+(setq ns-pop-up-frames nil)
+
+
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
 (color-theme-blackboard)
