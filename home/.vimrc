@@ -80,6 +80,14 @@ set colorcolumn=85 " visual warning if longer than 85 chars in line
 set list
 set listchars=tab:▸\ ,eol:¬
 
+" Create a personal temp dir if it doesn't exist
+silent execute '!mkdir "'.$HOME.'/.vtemp"'
+" Clean out old backups on each restart.
+silent execute '!rm "'.$HOME.'/.vtemp/*~"'
+" Write undo/swap files to the personal temp dir
+set backupdir=$HOME/.vtemp//
+set directory=$HOME/.vtemp//
+
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
 " nnoremap j gj
