@@ -86,7 +86,7 @@ silent execute '!mkdir "'.$HOME.'/.vtemp"'
 silent execute '!rm "'.$HOME.'/.vtemp/*~"'
 " Write undo/swap files to the personal temp dir
 set backupdir=$HOME/.vtemp//
-set directory=$HOME/.vtemp//
+set dir=$HOME/.vtemp//
 
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
