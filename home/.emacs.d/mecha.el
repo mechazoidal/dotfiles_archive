@@ -6,13 +6,16 @@
 
 (global-set-key (kbd "<f2>") 'org-agenda)
 
-(setq org-agenda-files (list "/Users/mecha/Dropbox/Org/home.org" 
-                              "/Users/mecha/Dropbox/Org/games.org"
-                              "/Users/mecha/Dropbox/Org/projects.org"))
+(setq org-agenda-files (list "~/Dropbox/Org/home.org" 
+                              "~/Dropbox/Org/games.org"
+                              "~/Dropbox/Org/projects.org"))
 
 ;; FIXME: not sure how to add this to emacs load path, since this
 ;; is a MacPorts-ism
-(setq-default ispell-program-name "/opt/local/bin/aspell")
+(if (eq system-type 'darwin)
+(setq-default ispell-program-name "/opt/local/bin/aspell"))
+(if (eq system-type 'gnu/linux)
+(setq flyspell-issue-welcome-flag nil)) ;;fix for Ubuntu 10.10
 
 ;; Vimpulse setup
 ;; FIXME: not sure if this is the right way: unlike Vim the first j will be captured
@@ -20,7 +23,8 @@
 ;; (vimpulse-imap (kbd "jj") vimpulse-exit-insert-state)
 
 ;; full-ack setup
-(setq ack-executable (executable-find "/opt/local/bin/ack"))
+(if (eq system-type 'darwin)
+(setq ack-executable (executable-find "/opt/local/bin/ack")))
 
 ;; smart-tab setup
 (require 'smart-tab)
