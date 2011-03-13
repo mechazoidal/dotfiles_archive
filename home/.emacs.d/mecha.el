@@ -30,6 +30,10 @@
 (require 'smart-tab)
 (global-smart-tab-mode 1)
 
+;; RVM integration
+(require 'rvm)
+(rvm-use-default) ;;use rvm's default ruby for the current session
+
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
 (color-theme-blackboard)
