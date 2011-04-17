@@ -30,6 +30,11 @@
 (require 'smart-tab)
 (global-smart-tab-mode 1)
 
+;; fix buffer switching
+;; (iswitchb-mode 1)
+;; (setq iswitchb-buffer-ignore '("^\\*"))
+;; (setq iswitchb-default-method 'samewindow)
+
 ;; RVM integration
 (require 'rvm)
 (rvm-use-default) ;;use rvm's default ruby for the current session
