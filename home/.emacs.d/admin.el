@@ -5,6 +5,10 @@
 ;; full-ack setup
 (setq ack-executable (executable-find "/opt/local/bin/ack"))
 
+;; RVM integration
+(require 'rvm)
+(rvm-use-default) ;;use rvm's default ruby for the current session
+
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
 ;; (color-theme-blackboard)

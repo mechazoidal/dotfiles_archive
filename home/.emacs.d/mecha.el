@@ -27,8 +27,8 @@
 (setq ack-executable (executable-find "/opt/local/bin/ack")))
 
 ;; smart-tab setup
-(require 'smart-tab)
-(global-smart-tab-mode 1)
+;; (require 'smart-tab)
+;; (global-smart-tab-mode 1)
 
 ;; fix buffer switching
 ;; (iswitchb-mode 1)
@@ -41,6 +41,6 @@
 
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
-(color-theme-blackboard)
+;; (color-theme-blackboard)
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 155))
