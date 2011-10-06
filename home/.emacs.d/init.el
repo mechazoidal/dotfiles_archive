@@ -9,7 +9,7 @@
 
 ;; Add in your own as you wish:
 ;; starter-kit-bindings
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby color-theme yasnippet yasnippet-bundle)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby yasnippet yasnippet-bundle)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
