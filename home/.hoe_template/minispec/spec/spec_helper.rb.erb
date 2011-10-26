@@ -1,0 +1,32 @@
+# Remove this block once you pick an option
+puts "\033[031mSTOP\033[0m: you need to pick one of the two option blocks in <%= project %>/spec_helper.rb"
+exit
+
+# Option 1: run test files directly or with autotest:
+# ( ruby -Ilib -Ispec spec/<%= project %>_spec.rb )
+# require 'minitest/autorun'
+# MiniTest::Unit.autorun
+
+
+# Option 2: run from guard (w/ guard-minitest gem)
+# require 'minitest/spec'
+# require '<%= project %>'
+
+# If you're using Bundler and guard:
+# - install/uncomment Hoe plugins :gemspec and :bundler in Rakefile
+# - rake gem:spec
+# - rake bundler:gemfile
+# - put a 'gemspec' line in your Gemfile
+
+
+# Prideful output
+# require 'minitest/pride'
+
+# Enable the minitest-reporters gem in the Rakefile for these
+# require 'minitest/reporters'
+# MiniTest::Unit.runner = MiniTest::SuiteRunner.new
+# Pick one:
+# MiniTest::Unit.runner.reporters << MiniTest::Reporters::ProgressReporter.new
+# MiniTest::Unit.runner.reporters << MiniTest::Reporters::SpecReporter.new
+
+

@@ -1,0 +1,29 @@
+# -*- ruby -*-
+
+require 'rubygems'
+require 'hoe'
+
+# You will want the bundler and gemspec plugins if using guard and/or bundler
+# ( gem install hoe-bundler hoe-gemspec )
+<%=
+  found = Gem.find_files("hoe/*.rb").map { |f| File.basename(f, ".rb").to_sym }
+  extra = found - Hoe.plugins - [:rake]
+  extra.map { |name| "# Hoe.plugin #{name.inspect}" }.sort.join("\n")
+%>
+
+Hoe.spec '<%= project %>' do
+
+  developer('<%= XIF %>', '<%= XIF %>@example.com')
+
+  extra_dev_deps << ['minitest', '~>2.7']
+  # if you want something more than pride
+  # extra_dev_deps << ['minitest-reporters'] 
+
+  # if you want to use Guard instead of autotest
+  # extra_dev_deps << ['guard']
+  # extra_dev_deps << ['guard-minitest']
+
+  # self.rubyforge_name = '<%= project %>x' # if different than '<%= project %>'
+end
+
+# vim: syntax=ruby
