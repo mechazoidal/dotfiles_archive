@@ -1,3 +1,7 @@
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)  
+(evil-mode 1)
+
 ;; FIXME: not sure how to add this path to emacs load path, since this
 ;; is a MacPorts-ism
 (setq-default ispell-program-name "/opt/local/bin/aspell")
