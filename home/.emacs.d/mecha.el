@@ -10,6 +10,10 @@
 ;;                              "~/Dropbox/Org/games.org"
 ;;                              "~/Dropbox/Org/projects.org"))
 
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)  
+(evil-mode 1)
+
 ;; FIXME: not sure how to add this to emacs load path, since this
 ;; is a MacPorts-ism
 (if (eq system-type 'darwin)
