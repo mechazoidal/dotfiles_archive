@@ -80,13 +80,15 @@ set colorcolumn=85 " visual warning if longer than 85 chars in line
 set list
 set listchars=tab:▸\ ,eol:¬
 
+" FIXME: disabled; they don't work conditionally, and
+" not sure if they're crashing MacVim :/
 " Create a personal temp dir if it doesn't exist
-silent execute '!mkdir "'.$HOME.'/.vtemp"'
+"silent execute '!mkdir "'.$HOME.'/.vtemp"'
 " Clean out old backups on each restart.
-silent execute '!rm "'.$HOME.'/.vtemp/*~"'
+"silent execute '!rm "'.$HOME.'/.vtemp/*~"'
 " Write undo/swap files to the personal temp dir
-set backupdir=$HOME/.vtemp//
-set dir=$HOME/.vtemp//
+"set backupdir=$HOME/.vtemp//
+"set dir=$HOME/.vtemp//
 
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
