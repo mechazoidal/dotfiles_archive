@@ -1,8 +1,13 @@
 " Load Pathogen bundle-management 
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
+
+" I think this is automatically set?
+syntax on " syntax highlighting
+
 filetype plugin indent on
+" No need to conform to vi
 set nocompatible
 
 " Nobody really needs modelines, especially with security issue
@@ -38,8 +43,6 @@ set gcr=a:blinkon0
 " Don't show these filetypes in wildmenu
 set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
 
-" I think this is automatically set?
-syntax on " syntax highlighting
 
 " Change leader
 let mapleader = ","
@@ -87,7 +90,7 @@ set listchars=tab:▸\ ,eol:¬
 " Clean out old backups on each restart.
 "silent execute '!rm "'.$HOME.'/.vtemp/*~"'
 " Write undo/swap files to the personal temp dir
-"set backupdir=$HOME/.vtemp//
+set backupdir=$HOME/.vtemp//
 "set dir=$HOME/.vtemp//
 
 " Make j/k move by screen line. 
