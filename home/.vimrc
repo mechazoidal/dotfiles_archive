@@ -63,7 +63,7 @@ set incsearch
 set showmatch
 set hlsearch
 
-" Clear out search results
+" Clear out search results with a simple macro
 nnoremap <leader><space> :noh<cr>
 
 " Match bracket pairs with <tab>
@@ -125,5 +125,4 @@ nnoremap <leader>ft Vatzf
 " Reselect just-pasted text with ,v
 nnoremap <leader>v V`]
 
-" Open EasyBuffer with ,`
-nnoremap <leader>` :EasyBuffer<CR>
+
