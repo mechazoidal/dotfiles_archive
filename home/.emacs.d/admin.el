@@ -13,8 +13,8 @@
 ;(global-set-key "\C-c\C-k" 'kill-region)
 
 ;; RVM integration
-(require 'rvm)
-(rvm-use-default) ;;use rvm's default ruby for the current session
+;;(require 'rvm)
+;;(rvm-use-default) ;;use rvm's default ruby for the current session
 
 ;; full-ack setup
 (setq ack-executable (executable-find "/opt/local/bin/ack"))
@@ -47,7 +47,7 @@
                     ("j" "Journal" entry (file+datetree "~/Dropbox/org/diary.org")
                                     "* %?\n%U\n" :immediate-finish t)
                     ("w" "org-protocol" entry (file "~/Dropbox/org/refile.org")
-                                    "* TODO Review %c\n%U\n" :immediate-finish t)
+                                    "* TODO Review %i\n%U\n" :immediate-finish t)
                     ("p" "Phone call" entry (file "~/Dropbox/org/refile.org")
                                     "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
                     ("u" "URL" entry (file "~/Dropbox/org/refile.org")
