@@ -91,7 +91,12 @@ set listchars=tab:▸\ ,eol:¬
 "silent execute '!rm "'.$HOME.'/.vtemp/*~"'
 " Write undo/swap files to the personal temp dir
 set backupdir=$HOME/.vtemp//
+" Skip /tmp and /private since we usually need to edit-in-place
+set backupskip=/tmp/*,/private/tmp/*
 "set dir=$HOME/.vtemp//
+
+" put swap files in $HOME/.vtemp/
+set directory=~/.vtemp//,/tmp
 
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
