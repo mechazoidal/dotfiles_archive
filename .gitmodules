@@ -4,3 +4,6 @@
 [submodule "home/.vim/bundle/vimwiki"]
 	path = home/.vim/bundle/vimwiki
 	url = https://github.com/weierophinney/vimwiki.git
+[submodule "home/.vim/bundle/EasyMotion"]
+	path = home/.vim/bundle/EasyMotion
+	url = https://github.com/vim-scripts/EasyMotion.git
