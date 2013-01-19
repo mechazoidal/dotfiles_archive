@@ -10,3 +10,6 @@
 [submodule "home/.vim/bundle/zencoding-vim"]
 	path = home/.vim/bundle/zencoding-vim
 	url = https://github.com/mattn/zencoding-vim.git
+[submodule "home/.vim/bundle/syntastic"]
+	path = home/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
