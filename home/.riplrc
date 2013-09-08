@@ -27,7 +27,7 @@ Ripl.config[:completion] = {:debug => true}
 
 # ripl-i18n
 # not a 'display character' gem, a 'display in native language' gem
-require 'ripl/i18n'
+#require 'ripl/i18n'
 
 Ripl.config[:history_size] = 100
 Ripl.config[:history] = "#{ENV['HOME']}/.irb-save-history"
