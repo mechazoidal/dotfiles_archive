@@ -40,14 +40,26 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(width . 155))
 
+;; FIXME not sure if there's a good way to load themes by default, see:
+;; http://stackoverflow.com/questions/15555309/emacs-for-windows-error-loading-color-theme
+;;(load-theme 'zenburn)
+
 ;; use C-c C-m / C-x C-m instead of M-x
 ;; WARNING: these will not work in org-mode docs
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
+;; C-w always bound to backward-kill-word like a terminal
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
 ;; Ace-jump-mode
 ;; (require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; M-x Aliases
+(defalias 'qrr 'query-replace-regexp)
 
 ;; Enable emacsclient
 ;; (Emacs.app: /Applications/Emacs.app/Contents/MacOS/bin/emacsclient)
