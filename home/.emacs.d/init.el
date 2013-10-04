@@ -7,7 +7,7 @@
 (when (not package-archive-contents)
     (package-refresh-contents))
 
-(defvar my-packages '(better-defaults idle-highlight-mode elisp-slime-nav paredit smex scpaste parenface-plus find-file-in-project magit undo-tree full-ack yasnippet yasnippet-bundle clojure-mode zenburn)
+(defvar my-packages '(better-defaults idle-highlight-mode elisp-slime-nav paredit smex scpaste parenface-plus find-file-in-project magit undo-tree full-ack yasnippet yasnippet-bundle clojure-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
