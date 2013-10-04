@@ -1,20 +1,19 @@
 (require 'package)
 (add-to-list 'package-archives
-                          '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 ;; Autoload packages
 (when (not package-archive-contents)
     (package-refresh-contents))
 
-;; Add in your own as you wish:
-;; starter-kit-bindings
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby undo-tree full-ack yasnippet yasnippet-bundle)
+(defvar my-packages '(better-defaults idle-highlight-mode elisp-slime-nav paredit smex scpaste parenface-plus find-file-in-project magit undo-tree full-ack yasnippet yasnippet-bundle clojure-mode zenburn)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
       (package-install p)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

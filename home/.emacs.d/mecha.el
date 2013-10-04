@@ -23,8 +23,8 @@
 
 
 ;; full-ack setup
-(if (eq system-type 'darwin)
-(setq ack-executable (executable-find "/opt/local/bin/ack")))
+;;(if (eq system-type 'darwin)
+;;(setq ack-executable (executable-find "/opt/local/bin/ack")))
 
 ;; fix buffer switching
 ;; (iswitchb-mode 1)
@@ -32,8 +32,8 @@
 ;; (setq iswitchb-default-method 'samewindow)
 
 ;; RVM integration
-(require 'rvm)
-(rvm-use-default) ;;use rvm's default ruby for the current session
+;;(require 'rvm)
+;;(rvm-use-default) ;;use rvm's default ruby for the current session
 
 ;; look-n-feel
 (set-face-attribute 'default nil :font "Inconsolata-dz-13")
@@ -60,6 +60,14 @@
 
 ;; M-x Aliases
 (defalias 'qrr 'query-replace-regexp)
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'prog-mode-hook 'idle-highlight-mode)
+(add-hook 'prog-mode-hook 'hl-line-mode)
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
+(setq whitespace-style '(face trailing lines-tail tabs))
 
 ;; Enable emacsclient
 ;; (Emacs.app: /Applications/Emacs.app/Contents/MacOS/bin/emacsclient)
