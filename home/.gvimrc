@@ -1,13 +1,16 @@
 " OS specific ----
 if has("gui_macvim")
   set guioptions-=T " remove toolbar
-  set guifont=Monaco:h13
-  set stal=2 " turn on tabs by default
-  set bg=dark
-  if &background == "dark"
-    highlight normal guibg=black
-    set transparency=8
-  endif
+  "set guifont=Monaco:h13
+  set guifont=Inconsolata-dz:h13
+  "set stal=2 " turn on tabs by default
+  colorscheme zenburn
+  set transparency=4
+  "set bg=dark
+  "if &background == "dark"
+    "highlight normal guibg=black
+    "set transparency=8
+  "endif
 elseif has("gui_gtk2")
   set guifont=Monaco
   set guioptions-=T " remove toolbar
@@ -25,7 +28,7 @@ end
 set anti 
 
 " Tab headings (evaluate these to see if I like them?)
-set gtl=%t gtt=%F
+"set gtl=%t gtt=%F
 
 " OBSOLETE settings
 "set t_Co=256 " 256 colors
