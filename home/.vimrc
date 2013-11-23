@@ -1,14 +1,23 @@
-" Load Pathogen bundle-management 
+" No need to conform to vi
+set nocompatible
+
+" Must deactivate filetype when loading bundle-mgmt
+" (the extra 'on' is to prevent errors in stock OSX vim)
+filetype on
 filetype off
-call pathogen#infect()
-call pathogen#helptags()
+
+" Load Pathogen bundle-management 
+"call pathogen#infect()
+"call pathogen#helptags()
+
+" Load vundle bundle-management
+source ~/.vim/bundles.vim
+
+" Reactivate filetypes after bundle mgmt.
+filetype plugin indent on
 
 " I think this is automatically set?
 syntax on " syntax highlighting
-
-filetype plugin indent on
-" No need to conform to vi
-set nocompatible
 
 " Nobody really needs modelines, especially with security issue
 set modelines=0
@@ -43,14 +52,6 @@ set gcr=a:blinkon0
 " Don't show these filetypes in wildmenu
 set wildignore=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class
 
-
-" Change leader
-let mapleader = ","
-
-" Change default regex to use \v
-nnoremap / /\v
-vnoremap / /\v
-
 " Use case-sensitive search if one-or-more uppercase chars
 set ignorecase
 set smartcase
@@ -62,13 +63,6 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-
-" Clear out search results
-nnoremap <leader><space> :noh<cr>
-
-" Match bracket pairs with <tab>
-nnoremap <tab> %
-vnoremap <tab> %
 
 " Line wrapping
 " old:
@@ -98,6 +92,36 @@ set backupskip=/tmp/*,/private/tmp/*
 " put swap files in $HOME/.vtemp/
 set directory=~/.vtemp//,/tmp
 
+" tpope/vim-fugitive must be installed!
+"set statusline=+'%<\ %f\ %{fugitive#statusline()}'
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" key remaps/mappings
+" Change leader
+let mapleader = ","
+
+" Change default regex to use \v
+nnoremap / /\v
+vnoremap / /\v
+
+" Clear out search results with ,<space>
+nnoremap <leader><space> :noh<cr>
+
+" Match bracket pairs with <tab>
+nnoremap <tab> %
+vnoremap <tab> %
+
+"TODO is there a way to autoload these on file-types?
+":RainbowParenthesesToggle       " Toggle it on/off
+":RainbowParenthesesLoadRound    " (), the default when toggling
+":RainbowParenthesesLoadSquare   " []
+":RainbowParenthesesLoadBraces   " {}
+":RainbowParenthesesLoadChevrons " <>
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
 " nnoremap j gj
@@ -110,11 +134,8 @@ nnoremap ; :
 au FocusLost * :wa
 
 " Mappings
-map <F2> :NERDTreeToggle<CR>
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" use Ack
-nnoremap <leader>a :Ack
 " use jj to exit insert mode
 inoremap jj <ESC>
 " Window-splitting helpers
@@ -130,6 +151,80 @@ nnoremap <leader>ft Vatzf
 " Reselect just-pasted text with ,v
 nnoremap <leader>v V`]
 
+" Rooter options
+" (cd is default mapping, dup'd here for explicitness)
+map <silent> <unique> <Leader>cd <Plug>RooterChangeToRootDirectory
+" TODO move these to after/plugin/vim-router.vim
+"autocmd rooter BufEnter *.java :Rooter
+"autocmd rooter BufEnter *.clj :Rooter
+" FIXME EVERY time you enter(as in, switch to a pane/window/tab), rooter will be toggled
+let g:rooter_manual_only = 1
+
+" use Ag -- the_silver_searcher
+nnoremap <leader>a :Ag<space>
+
 " Open EasyBuffer with ,`
 nnoremap <leader>` :EasyBuffer<CR>
 
+" gundo mappings
+nnoremap <F5> :GundoToggle<CR>
+
+" vim-task mappings
+"inoremap <silent> <buffer> <C-D-CR> <ESC>:call Toggle_task_status()<CR>i
+"noremap <silent> <buffer> <C-D-CR> :call Toggle_task_status()<CR>
+"inoremap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
+nnoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>
+":call Toggle_task_status()
+nnoremap <silent> <leader>) :VimwikiListChangeLevel <<<CR>
+nnoremap <silent> <leader>( :VimwikiListChangeLevel >><CR>
+
+" Eclim settings
+" FIXME should only trigger if eclim is installed
+" http://writequit.org/blog/?p=279
+" ,ji imports whatever is needed for current line
+nnoremap <silent> <leader>ji :JavaImport<cr>
+" ,jd opens javadoc for statement in browser
+nnoremap <silent> <leader>jd :JavaDocSearch -x declarations<cr>
+" ,<enter> searches context for statement
+"nnoremap <silent> <leader><cr> :JavaSearchContext<cr>
+" ,jv validates current java file
+"nnoremap <silent> <leader>jv :Validate<cr>
+" ,jc shows corrections for the current line of java
+"nnoremap <silent> <leader>jc :JavaCorrect<cr>
+
+if has("gui_macvim")
+  "'open' on OSX will open the url in the default browser without issue
+  let g:EclimBrowser='open'
+end
+
+" let eclim and YCM play nice together
+" FIXME this should only trigger if eclim is installed
+let g:EclimCompletionMethod = 'omnifunc'
+
+" YCM settings
+
+" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" #1
+"let g:ycm_key_list_previous_completion=['<Up>']
+"let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsListSnippets="<c-s-tab>"
+
+" #2
+function! g:UltiSnips_Complete()
+  call UltiSnips_ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips_JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
