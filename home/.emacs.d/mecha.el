@@ -66,6 +66,7 @@
 (add-hook 'prog-mode-hook 'hl-line-mode)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojurescript-mode-hook 'paredit-mode)
 
 (setq whitespace-style '(face trailing lines-tail tabs))
 
