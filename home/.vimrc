@@ -46,6 +46,8 @@ set laststatus=2
 set relativenumber " requires Vim 7.3!
 " set undofile " requires Vim 7.3!
 
+set shell=bash
+
 " Disable cursor blinking
 set gcr=a:blinkon0
 
@@ -69,7 +71,10 @@ set hlsearch
 " set nowrap
 " set linebreak  " Wrap at word
 set wrap
-set textwidth=79
+" Not force-wrapping text for now, as it's a pain to balance it in wiki pages
+"set textwidth=79
+
+" Allow 'gq', automatically insert comment leader in Insert, recognize list numbers
 set formatoptions=qrn1
 set colorcolumn=85 " visual warning if longer than 85 chars in line
 
@@ -85,7 +90,7 @@ set listchars=tab:▸\ ,eol:¬
 "silent execute '!rm "'.$HOME.'/.vtemp/*~"'
 " Write undo/swap files to the personal temp dir
 set backupdir=$HOME/.vtemp//
-" Skip /tmp and /private since we usually need to edit-in-place
+" Skip /tmp and /private since changing anything there needs edit-in-place
 set backupskip=/tmp/*,/private/tmp/*
 "set dir=$HOME/.vtemp//
 
@@ -93,10 +98,9 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vtemp//,/tmp
 
 " tpope/vim-fugitive must be installed!
-"set statusline=+'%<\ %f\ %{fugitive#statusline()}'
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" key remaps/mappings
+" key mappings
 " Change leader
 let mapleader = ","
 
@@ -121,6 +125,7 @@ vnoremap <tab> %
 "au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
+nnoremap <leader>R :RainbowParenthesesToggle<CR>
 
 " Make j/k move by screen line. 
 " disabled for now, not sure if want
@@ -146,7 +151,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " fold tags with ,ft
-nnoremap <leader>ft Vatzf
+"nnoremap <leader>ft Vatzf
 
 " Reselect just-pasted text with ,v
 nnoremap <leader>v V`]
@@ -173,10 +178,15 @@ nnoremap <F5> :GundoToggle<CR>
 "inoremap <silent> <buffer> <C-D-CR> <ESC>:call Toggle_task_status()<CR>i
 "noremap <silent> <buffer> <C-D-CR> :call Toggle_task_status()<CR>
 "inoremap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
-nnoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>
+"nnoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>
 ":call Toggle_task_status()
+
+" vimwiki mappings
 nnoremap <silent> <leader>) :VimwikiListChangeLevel <<<CR>
 nnoremap <silent> <leader>( :VimwikiListChangeLevel >><CR>
+
+nnoremap <silent> <leader>m :VimwikiToggleListItem<CR>
+vnoremap <silent> <leader>m :VimwikiToggleListItem<CR>
 
 " Eclim settings
 " FIXME should only trigger if eclim is installed
@@ -192,14 +202,15 @@ nnoremap <silent> <leader>jd :JavaDocSearch -x declarations<cr>
 " ,jc shows corrections for the current line of java
 "nnoremap <silent> <leader>jc :JavaCorrect<cr>
 
-if has("gui_macvim")
+if exists("g:EclimBrowser") && has("gui_macvim")
   "'open' on OSX will open the url in the default browser without issue
   let g:EclimBrowser='open'
 end
 
 " let eclim and YCM play nice together
-" FIXME this should only trigger if eclim is installed
-let g:EclimCompletionMethod = 'omnifunc'
+if exists("g:EclimCompletionMethod") && has("gui_macvim")
+  let g:EclimCompletionMethod = 'omnifunc'
+end
 
 " YCM settings
 
@@ -227,4 +238,3 @@ endfunction
 
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
