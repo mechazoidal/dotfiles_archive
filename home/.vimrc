@@ -45,6 +45,7 @@ set backspace=indent,eol,start
 set laststatus=2
 set relativenumber " requires Vim 7.3!
 " set undofile " requires Vim 7.3!
+set number "requires Vim 7.4!
 
 set shell=bash
 
