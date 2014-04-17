@@ -6,10 +6,6 @@ set nocompatible
 filetype on
 filetype off
 
-" Load Pathogen bundle-management 
-"call pathogen#infect()
-"call pathogen#helptags()
-
 " Load vundle bundle-management
 source ~/.vim/bundles.vim
 
@@ -45,7 +41,6 @@ set backspace=indent,eol,start
 set laststatus=2
 set relativenumber " requires Vim 7.3!
 " set undofile " requires Vim 7.3!
-set number "requires Vim 7.4!
 
 set shell=bash
 
@@ -103,14 +98,15 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " key mappings
 " Change leader
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Change default regex to use \v
 nnoremap / /\v
 vnoremap / /\v
 
 " Clear out search results with ,<space>
-nnoremap <leader><space> :noh<cr>
+"nnoremap <leader><space> :noh<cr>
+nnoremap <leader>, :noh<cr>
 
 " Match bracket pairs with <tab>
 nnoremap <tab> %
@@ -223,12 +219,12 @@ end
 
 " #2
 function! g:UltiSnips_Complete()
-  call UltiSnips_ExpandSnippet()
+  call UltiSnips#ExpandSnippet()
   if g:ulti_expand_res == 0
     if pumvisible()
       return "\<C-n>"
     else
-      call UltiSnips_JumpForwards()
+      call UltiSnips#JumpForwards()
       if g:ulti_jump_forwards_res == 0
         return "\<TAB>"
       endif
@@ -239,3 +235,14 @@ endfunction
 
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()

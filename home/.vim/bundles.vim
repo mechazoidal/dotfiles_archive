@@ -6,7 +6,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " original submodule'd bundles
-Bundle 'airblade/rooter'
+Bundle 'airblade/vim-rooter'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'vimwiki/vimwiki'
@@ -26,12 +26,14 @@ Bundle 'tpope/vim-fugitive'
 "Bundle 'tpope/vim-classpath'
 
 " clojure repl
-"Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-fireplace'
 " syntax/color runtime files extracted from VimClojure
-"Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-clojure-static'
 
 " any repo in official vim-scripts GH can automagically be used w/o username
 Bundle 'EasyMotion'
+
+Bundle 'paredit.vim'
 
 " ggreer/the_silver_searcher
 Bundle 'ag.vim'
@@ -48,7 +50,7 @@ Bundle 'troydm/easybuffer.vim'
 
 "'instant-markdown.vim'
 
-Bundle 'editorconfig/editorconfig-vim'
+"Bundle 'editorconfig/editorconfig-vim'
 
 " experimental
 " probably easier to do install.sh from its dir rather than let vundle do it
