@@ -141,7 +141,10 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " use jj to exit insert mode
 inoremap jj <ESC>
 " Window-splitting helpers
+" Split vertically with <leader>w
 nnoremap <leader>w <C-w>v<C-w>l
+" Split horizontally with <leader>v
+nnoremap <leader>v <C-w>s<C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -151,7 +154,7 @@ nnoremap <C-l> <C-w>l
 "nnoremap <leader>ft Vatzf
 
 " Reselect just-pasted text with ,v
-nnoremap <leader>v V`]
+"nnoremap <leader>v V`]
 
 " Rooter options
 " (cd is default mapping, dup'd here for explicitness)
@@ -202,6 +205,9 @@ nnoremap <silent> <leader>jd :JavaDocSearch -x declarations<cr>
 if exists("g:EclimBrowser") && has("gui_macvim")
   "'open' on OSX will open the url in the default browser without issue
   let g:EclimBrowser='open'
+  "don't put TODO/FIXME in task list 
+  "http://stackoverflow.com/questions/18618985/how-do-i-make-todos-not-show-up-as-errors-in-eclim
+  let g:EclimSignLevel=2
 end
 
 " let eclim and YCM play nice together
