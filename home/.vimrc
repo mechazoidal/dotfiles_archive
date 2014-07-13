@@ -150,6 +150,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" force detection of *.md to Markdown, not modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " fold tags with ,ft
 "nnoremap <leader>ft Vatzf
 
