@@ -1,5 +1,6 @@
 " No need to conform to vi
 set nocompatible
+set omnifunc=syntaxcomplete#Complete
 
 " Must deactivate filetype when loading bundle-mgmt
 " (the extra 'on' is to prevent errors in stock OSX vim)

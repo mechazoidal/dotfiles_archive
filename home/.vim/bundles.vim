@@ -1,23 +1,41 @@
-" should be source'd from .vimrc
+" this file should be source'd from .vimrc
+
+" Merlin authors discourage installing through vundle, so install through OPAM first
+"https://github.com/realworldocaml/book/wiki/Installation-Instructions
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+endif
+
+if executable('ocp-indent')
+  let g:ocp_indent_vimfile = system("opam config var share")
+  let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
+  let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
+endif
+
+autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
+
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let vundle manage vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " original submodule'd bundles
-Bundle 'airblade/vim-rooter'
-Bundle 'scrooloose/syntastic'
+Plugin 'airblade/vim-rooter'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'vimwiki/vimwiki'
-Bundle 'samsonw/vim-task'
+Plugin 'vimwiki/vimwiki'
+Plugin 'samsonw/vim-task'
 " fork that combines both
 "Bundle 'weierophinney/vimwiki'
 
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
 
 " meant for clojure def, but can be used by standard?
 " however, it might interfere with eclim:
@@ -26,39 +44,39 @@ Bundle 'tpope/vim-fugitive'
 "Bundle 'tpope/vim-classpath'
 
 " clojure repl
-Bundle 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fireplace'
 " syntax/color runtime files extracted from VimClojure
-Bundle 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-static'
 
 " any repo in official vim-scripts GH can automagically be used w/o username
-Bundle 'EasyMotion'
+Plugin 'EasyMotion'
 
-Bundle 'paredit.vim'
+Plugin 'paredit.vim'
 
 " ggreer/the_silver_searcher
-Bundle 'ag.vim'
+Plugin 'ag.vim'
 
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
-Bundle 'mattn/emmet-vim'
+Plugin 'mattn/emmet-vim'
 
 "Bundle 'groenewege/vim-less'
 
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'troydm/easybuffer.vim'
+Plugin 'troydm/easybuffer.vim'
 
 "'instant-markdown.vim'
 
 " experimental
 " probably easier to do install.sh from its dir rather than let vundle do it
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 
-Bundle 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
-Bundle 'bogado/file-line'
+Plugin 'bogado/file-line'
 " gsanders 
 " Bundle 'cocoa'
 
@@ -70,4 +88,3 @@ Bundle 'bogado/file-line'
 
 " needs +cscope in vim
 "Bundle 'autoload_cscope.vim'
-
