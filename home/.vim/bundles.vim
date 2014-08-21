@@ -50,8 +50,6 @@ Bundle 'troydm/easybuffer.vim'
 
 "'instant-markdown.vim'
 
-"Bundle 'editorconfig/editorconfig-vim'
-
 " experimental
 " probably easier to do install.sh from its dir rather than let vundle do it
 Bundle 'Valloric/YouCompleteMe'
@@ -70,7 +68,6 @@ Bundle 'bogado/file-line'
 " vim-markdown
 " vim-peepopen
 
+" needs +cscope in vim
+"Bundle 'autoload_cscope.vim'
 
-" look-n-feel
-" TODO just copy zenburn.vim to colors/
-" Bundle 'jnurmine/Zenburn'
