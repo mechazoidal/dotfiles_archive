@@ -1,22 +1,5 @@
 " this file should be source'd from .vimrc
 
-" Merlin authors discourage installing through vundle, so install through OPAM first
-"https://github.com/realworldocaml/book/wiki/Installation-Instructions
-if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
-endif
-
-if executable('ocp-indent')
-  let g:ocp_indent_vimfile = system("opam config var share")
-  let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
-  let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
-endif
-
-autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
-
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -87,4 +70,12 @@ Plugin 'bogado/file-line'
 " vim-peepopen
 
 " needs +cscope in vim
-"Bundle 'autoload_cscope.vim'
+if has('cscope')
+  Plugin 'autoload_cscope.vim'
+endif
+
+" recommended over official ocp-indent vim mappings
+" requires python support
+if has('python')
+  Plugin 'def-lkb/ocp-indent-vim'
+endif

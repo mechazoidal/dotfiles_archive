@@ -1,6 +1,5 @@
 " No need to conform to vi
 set nocompatible
-set omnifunc=syntaxcomplete#Complete
 
 " Must deactivate filetype when loading bundle-mgmt
 " (the extra 'on' is to prevent errors in stock OSX vim)
@@ -12,6 +11,7 @@ source ~/.vim/bundles.vim
 
 " Reactivate filetypes after bundle mgmt.
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 
 " I think this is automatically set?
 syntax on " syntax highlighting
@@ -332,3 +332,22 @@ if has('cscope')
   "command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 " end cscope
+
+" ocaml setup
+" Merlin authors discourage installing through vundle, so install through OPAM first
+"https://github.com/realworldocaml/book/wiki/Installation-Instructions
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/merlin"
+  
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+  let g:syntastic_ocaml_checkers = ['merlin']
+endif
+
+"if executable('ocp-indent') && has('python')
+  "let g:ocp_indent_vimfile = system("opam config var share")
+  "let g:ocp_indent_vimfile = substitute(g:ocp_indent_vimfile, '[\r\n]*$', '', '')
+  "let g:ocp_indent_vimfile = g:ocp_indent_vimfile . "/vim/syntax/ocp-indent.vim"
+  "autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
+  "execute "set rtp+="</path/to/ocp-indent-vim>
+"endif
