@@ -51,6 +51,8 @@ Plugin 'troydm/easybuffer.vim'
 
 "'instant-markdown.vim'
 
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
 " experimental
 " probably easier to do install.sh from its dir rather than let vundle do it
 Plugin 'Valloric/YouCompleteMe'
