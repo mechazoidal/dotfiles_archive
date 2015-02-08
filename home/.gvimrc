@@ -2,6 +2,8 @@
 if has("gui_macvim")
   set guioptions-=T " remove toolbar
   set guifont=Inconsolata-g:h14
+  "for high-res monitors
+  "set guifont=Inconsolata-g:h18
   colorscheme zenburn
   set transparency=4
 elseif has("gui_gtk2")

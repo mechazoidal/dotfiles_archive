@@ -31,10 +31,18 @@ Plugin 'tpope/vim-fireplace'
 " syntax/color runtime files extracted from VimClojure
 Plugin 'guns/vim-clojure-static'
 
-" any repo in official vim-scripts GH can automagically be used w/o username
+" more in the spirit of vim than paredit
+Plugin 'guns/vim-sexp'
+
+" like YouCompleteMe, requires a manual 'make' in its plugin dir
+Plugin 'Shougo/vimproc.vim'
+
+" any repo in official vim-scripts github can automagically be used w/o username
 Plugin 'EasyMotion'
 
-Plugin 'paredit.vim'
+Plugin 'unite.vim'
+
+"Plugin 'paredit.vim'
 
 " ggreer/the_silver_searcher
 Plugin 'ag.vim'
@@ -62,14 +70,10 @@ Plugin 'sjl/gundo.vim'
 Plugin 'SirVer/ultisnips'
 
 Plugin 'bogado/file-line'
-" gsanders 
-" Bundle 'cocoa'
 
-" vim-css-color
-" vim-css3-syntax
-" vim-less
-" vim-markdown
-" vim-peepopen
+" required for MRU support in Unite
+" (must load AFTER unite)
+Plugin 'Shougo/neomru.vim'
 
 " needs +cscope in vim
 if has('cscope')

@@ -265,6 +265,19 @@ augroup AutomaticSwapRecoveryAndDelete
     autocmd BufWinEnter * :if exists("b:swapname") | call delete(b:swapname) | unlet b:swapname | endif
 augroup end
 
+" Use unite.vim and ag to find files quickly
+let g:unite_source_history_yank_enable = 1
+try
+  " TODO could Selecta be used here?
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" Fuzzy-search for a file in the current tree
+nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec/async<cr>
+" Reset unite cache (is <Plug> unique to unite?)
+":nnoremap <space>r <Plug>(unite_restart)
+
 " cscope
 " adapted from http://cscope.sourceforge.net/cscope_maps.vim
 " http://stackoverflow.com/questions/934233/cscope-or-ctags-why-choose-one-over-the-other
