@@ -86,18 +86,13 @@ set listchars=tab:▸\ ,eol:¬
 "silent execute '!mkdir "'.$HOME.'/.vtemp"'
 " Clean out old backups on each restart.
 "silent execute '!rm "'.$HOME.'/.vtemp/*~"'
-" Write undo/swap files to the personal temp dir
-set backupdir=$HOME/.vtemp//
-" Skip /tmp and /private since changing anything there needs edit-in-place
-set backupskip=/tmp/*,/private/tmp/*
 "set dir=$HOME/.vtemp//
-
-" put swap files in $HOME/.vtemp/
-set directory=~/.vtemp//,/tmp
 
 " tpope/vim-fugitive must be installed!
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
+" Don't warn about files changing out from under us
+set autoread
 " key mappings
 " Change leader
 let mapleader = "\<Space>"
@@ -244,6 +239,8 @@ function! g:UltiSnips_Complete()
   return ""
 endfunction
 
+" allow loading ycm_extra_conf.py in local projects
+let g:ycm_extra_conf_globlist = ['~/Documents/Projects/*']
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
@@ -258,6 +255,14 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" SWP files and friends
+" Write undo/swap files to a vim-specific temp dir
+set backupdir=$HOME/.vtemp//
+set directory=~/.vtemp//,/tmp
+set undodir=~/.vtemp//
+set viminfo+=n~/.vtemp/viminfo
+" Skip /tmp and /private since changing anything there needs edit-in-place
+set backupskip=/tmp/*,/private/tmp/*
 " Automatically recover+delete swap files if reopening after a crash
 augroup AutomaticSwapRecoveryAndDelete
     autocmd!
@@ -269,12 +274,23 @@ augroup end
 let g:unite_source_history_yank_enable = 1
 try
   " TODO could Selecta be used here?
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  "let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  "call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  "call unite#custom_source('file,file/new,buffer,file_rec', 'matchers', 'matcher_hide_hidden_files' 'matcher_fuzzy')
+  "call unite#custom_source('buffer,file,file_mru,file_rec', 'sorters', 'sorter_rank')
+
+  "let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  "let g:unite_source_rec_async_command='tree -i -f -P "*.cpp|*.c|*.h"'
+  "let g:unite_source_file_rec_async_command='tree -i -f -P "*.cpp|*.c|*.h"'
+  "call unite#filters#sorter_default#use(['sorter_selecta'])
 catch
 endtry
 " Fuzzy-search for a file in the current tree
+"nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec/async<cr>
+" Fuzzy-search for a file in the current tree
 nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec/async<cr>
+" Fuzzy-search for a file in the current cwd
+nnoremap <Leader>e :<C-u>Unite -start-insert file_mru<cr>
 " Reset unite cache (is <Plug> unique to unite?)
 ":nnoremap <space>r <Plug>(unite_restart)
 
@@ -364,3 +380,7 @@ endif
   "autocmd FileType ocaml exec ":source " . g:ocp_indent_vimfile
   "execute "set rtp+="</path/to/ocp-indent-vim>
 "endif
+
+"if you need to do work with ARM assembly
+let asmsyntax='armasm'
+let filetype_inc='armasm'
