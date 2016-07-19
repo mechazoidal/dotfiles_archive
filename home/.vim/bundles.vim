@@ -1,10 +1,11 @@
 " this file should be source'd from .vimrc
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#rc()
+call vundle#begin()
 
 " let vundle manage vundle
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " original submodule'd bundles
 Plugin 'airblade/vim-rooter'
@@ -33,6 +34,18 @@ Plugin 'guns/vim-clojure-static'
 
 " more in the spirit of vim than paredit
 Plugin 'guns/vim-sexp'
+" tpope has the right ideas!
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" 'Vim built-in Racket Omni-completion and Documentation'
+Plugin 'MicahElliott/vrod'
+
+"Plugin 'wlangstroth/vim-racket'
+"Plugin 'jpalardy/vim-slime'
+"Plugin 'slimv.vim'
+"Plugin 'kovisoft/slimv'
+Plugin 'sjl/tslime.vim'
+
+Plugin 'rust-lang/rust.vim'
 
 " like YouCompleteMe, requires a manual 'make' in its plugin dir
 Plugin 'Shougo/vimproc.vim'
@@ -85,3 +98,4 @@ endif
 if has('python')
   Plugin 'def-lkb/ocp-indent-vim'
 endif
+call vundle#end()
