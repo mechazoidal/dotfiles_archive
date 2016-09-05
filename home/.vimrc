@@ -6,8 +6,10 @@ set nocompatible
 filetype on
 filetype off
 
-" Load vundle bundle-management
-source ~/.vim/bundles.vim
+" Load pathogen bundle-management
+" (.vim/bundle MUST be present already)
+source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " Reactivate filetypes after bundle mgmt.
 filetype plugin indent on

@@ -1,27 +1,25 @@
 " OS specific ----
 if has("gui_macvim")
-  set guioptions-=T " remove toolbar
-  set guifont=Inconsolata-g:h14
-  "for high-res monitors
-  "set guifont=Inconsolata-g:h18
-  colorscheme zenburn
+  " Ask OSX if we have more vertical screen-space than the built-in display (ie, monitor is connected
+  if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
+    set guifont=Inconsolata-dz:h17
+    "set guifont=Inconsolata-dz:h18
+  else
+    set guifont=Inconsolata-dz:h14
+  endif
   set transparency=4
 elseif has("gui_gtk2")
-  set guifont=Monaco
-  set guioptions-=T " remove toolbar
-  colorscheme ir_black
+  set guifont=Inconsolata\ Medium\ 15
+  set guioptions-=m " remove menu
 elseif has("gui_win32")
-  set guioptions-=T " remove toolbar
-  set stal=2 " turn on tabs by default
-  set guifont=Lucida_Console:h12  
-  colorscheme ir_black
+  set guifont=Lucida_Console:h12
+  "set guioptions-=T " remove toolbar
 end
 
 " General settings ----
-
+" remove toolbar
+set guioptions-=T
+colorscheme zenburn
 " anti-aliased fonts where possible
-set anti 
-
-" Tab headings (evaluate these to see if I like them?)
-"set gtl=%t gtt=%F
+set anti
 
