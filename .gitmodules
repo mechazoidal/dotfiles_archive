@@ -75,7 +75,7 @@
 	url = https://github.com/vim-scripts/ag.vim.git
 [submodule "vim/bundle/unite.vim"]
 	path = vim/bundle/unite.vim
-	url = https://github.com/vim-scripts/unite.vim.git
+	url = https://github.com/Shougo/unite.vim.git
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
