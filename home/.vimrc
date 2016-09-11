@@ -95,6 +95,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Don't warn about files changing out from under us
 set autoread
+
 " key mappings
 " Change leader
 let mapleader = "\<Space>"
@@ -134,6 +135,10 @@ nnoremap ; :
 " Autosave on losing focus
 au FocusLost * :wa
 
+" Disable middle mouse to avoid pasting problems on OSX and friends
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+
 " Mappings
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -160,7 +165,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Rooter options
 " (cd is default mapping, dup'd here for explicitness)
-map <silent> <unique> <Leader>cd <Plug>RooterChangeToRootDirectory
+"map <silent> <unique> <Leader>cd <Plug>RooterChangeToRootDirectory
 " TODO move these to after/plugin/vim-router.vim
 "autocmd rooter BufEnter *.java :Rooter
 "autocmd rooter BufEnter *.clj :Rooter
@@ -184,8 +189,8 @@ nnoremap <F5> :GundoToggle<CR>
 ":call Toggle_task_status()
 
 " vimwiki mappings
-nnoremap <silent> <leader>) :VimwikiListChangeLevel <<<CR>
-nnoremap <silent> <leader>( :VimwikiListChangeLevel >><CR>
+"nnoremap <silent> <leader>) :VimwikiListChangeLevel <<<CR>
+"nnoremap <silent> <leader>( :VimwikiListChangeLevel >><CR>
 
 nnoremap <silent> <leader>m :VimwikiToggleListItem<CR>
 vnoremap <silent> <leader>m :VimwikiToggleListItem<CR>
@@ -242,7 +247,14 @@ function! g:UltiSnips_Complete()
 endfunction
 
 " allow loading ycm_extra_conf.py in local projects
-let g:ycm_extra_conf_globlist = ['~/Documents/Projects/*']
+let g:ycm_extra_conf_globlist = ['~/Documents/workspace/*']
+" auto-close semantic engine preview after selecting a match
+let g:ycm_autoclose_preview_window_after_completion = 1
+" auto-close semantic engine preview after leaving insert mode
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" read identifiers from any ctags files
+" let g:ycm_collect_identifiers_from_tags_files = 1
+
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
@@ -287,10 +299,9 @@ try
   "call unite#filters#sorter_default#use(['sorter_selecta'])
 catch
 endtry
-" Fuzzy-search for a file in the current tree
+" Fuzzy-search for a file in the current cwd
 "nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec/async<cr>
-" Fuzzy-search for a file in the current tree
-nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec/async<cr>
+nnoremap <Leader><Leader> :<C-u>Unite -start-insert file_rec<cr>
 " Fuzzy-search for a file in the current cwd
 nnoremap <Leader>e :<C-u>Unite -start-insert file_mru<cr>
 " Reset unite cache (is <Plug> unique to unite?)
@@ -383,6 +394,16 @@ endif
   "execute "set rtp+="</path/to/ocp-indent-vim>
 "endif
 
-"if you need to do work with ARM assembly
 let asmsyntax='armasm'
 let filetype_inc='armasm'
+
+"let g:slime_target = "tmux"
+"let g:tslime_ensure_trailing_newlines = 1
+"nmap <leader>t <Plug>NormalModeSendToTmux
+"let g:tslime_normal_mapping = "<leader>t"
+"let g:tslime_visual_mapping = "<leader>t"
+"let g:tslime_vars_mapping = "<leader>v"
+"vmap <leader>t <Plug>SendSelectionToTmux
+
+"let g:tslime_always_current_session = 1
+"let g:tslime_always_current_window = 1

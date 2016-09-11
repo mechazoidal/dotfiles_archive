@@ -7,6 +7,8 @@ if has("gui_macvim")
   else
     set guifont=Inconsolata-dz:h14
   endif
+  set guioptions-=T " remove toolbar
+  colorscheme zenburn
   set transparency=4
 elseif has("gui_gtk2")
   set guifont=Inconsolata\ Medium\ 15
@@ -21,5 +23,5 @@ end
 set guioptions-=T
 colorscheme zenburn
 " anti-aliased fonts where possible
-set anti
+set anti 
 
